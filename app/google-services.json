@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1045079558698",
+    "project_id": "agenda-app-e5cec",
+    "storage_bucket": "agenda-app-e5cec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045079558698:android:414f49bd385bb3e9735153",
+        "android_client_info": {
+          "package_name": "com.adrian.angenda_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045079558698-ffnhfm1uf1ot9j1rj5ubh15f7g2tq60b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adrian.angenda_online",
+            "certificate_hash": "9b0f70ee4fa8857d69581cecd817ebe8bbc16b09"
+          }
+        },
+        {
+          "client_id": "1045079558698-t1bjcbqste1lmiu26vc6gp4ra43crop1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnPL7WJhYYv1WhD0NTM1gR1Dc812mH87g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045079558698-t1bjcbqste1lmiu26vc6gp4ra43crop1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Angenda_Online</string>
+
+
+    <!--Main activity-->
+    <string name="Btn_Login">Login</string>
+    <string name="Btn_Registro">Registro</string>
+
+    <!--actividad registro-->
+    <string name="CrearCuentaTXT">Crear una cuenta</string>
+    <string name="NombresEt">Nombres</string>
+    <string name="CorreoEt">Correo electronico</string>
+    <string name="ContrasenhaEt">Contrasenha</string>
+    <string name="ConfirmarContrasenhaEt">confirmar contrasenha</string>
+    <string name="ResgistrarUsuario">Registrar</string>
+    <string name="Tengounacuenta">Tengo una cuenta</string>
+</resources>
