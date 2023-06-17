@@ -117,14 +117,14 @@
 
         <TextView
             android:id="@+id/Tengounacuenta"
-            android:text="Tengo una cuenta"
-            android:textSize="18sp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ></TextView>
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Tengo una cuenta"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"></TextView>
 
 
 
