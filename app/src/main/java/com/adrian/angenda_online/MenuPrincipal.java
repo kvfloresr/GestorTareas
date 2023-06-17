@@ -20,7 +20,7 @@ public class MenuPrincipal extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 int itemId = item.getItemId();
-                if (itemId == R.id.navigation_artists) {
+                if (itemId == R.id.navigation_mas) {
                     // Iniciar la actividad de añadir
                     Intent intent = new Intent(MenuPrincipal.this, Anadir.class);
                     startActivity(intent);

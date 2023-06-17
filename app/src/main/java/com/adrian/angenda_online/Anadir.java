@@ -94,4 +94,79 @@ public class Anadir extends AppCompatActivity {
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.cancel(1);
     }
+
+    public static class Tarea {
+        private String nombre;
+        private String fecha;
+        private String horaInicio;
+        private String horaFinal;
+        private String descripcion;
+
+        private Tarea(Builder builder) {
+            this.nombre = builder.nombre;
+            this.fecha = builder.fecha;
+            this.horaInicio = builder.horaInicio;
+            this.horaFinal = builder.horaFinal;
+            this.descripcion = builder.descripcion;
+        }
+
+        // Métodos getters para acceder a los datos de la tarea
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public String getFecha() {
+            return fecha;
+        }
+
+        public String getHoraInicio() {
+            return horaInicio;
+        }
+
+        public String getHoraFinal() {
+            return horaFinal;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public static class Builder {
+            private String nombre;
+            private String fecha;
+            private String horaInicio;
+            private String horaFinal;
+            private String descripcion;
+
+            public Builder setNombre(String nombre) {
+                this.nombre = nombre;
+                return this;
+            }
+
+            public Builder setFecha(String fecha) {
+                this.fecha = fecha;
+                return this;
+            }
+
+            public Builder setHoraInicio(String horaInicio) {
+                this.horaInicio = horaInicio;
+                return this;
+            }
+
+            public Builder setHoraFinal(String horaFinal) {
+                this.horaFinal = horaFinal;
+                return this;
+            }
+
+            public Builder setDescripcion(String descripcion) {
+                this.descripcion = descripcion;
+                return this;
+            }
+
+            public Tarea build() {
+                return new Tarea(this);
+            }
+        }
+    }
 }
