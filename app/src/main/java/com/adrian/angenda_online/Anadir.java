@@ -6,32 +6,65 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.datepicker.OnSelectionChangedListener;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Anadir extends AppCompatActivity {
 
     private EditText editTextDate;
     private Switch notificationSwitch;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir);
 
         editTextDate = findViewById(R.id.editTextDate5);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         ImageView imageViewCalendar = findViewById(R.id.imageCalendar);
         notificationSwitch = findViewById(R.id.notificationSwitch);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_casa) {
+                    // Iniciar la actividad de inicio
+                    Intent intent = new Intent(Anadir.this, MenuPrincipal.class);
+                    startActivity(intent);
+                    return true;
+                }
+                if (itemId == R.id.navigation_calendario) {
+                    // Iniciar la actividad de calendario
+                    Intent intent = new Intent(Anadir.this, Calendario.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         imageViewCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +94,23 @@ public class Anadir extends AppCompatActivity {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(Anadir.this,
-                (view, selectedYear, selectedMonth, selectedDay) -> {
-                    // Se ejecuta cuando se selecciona una fecha
-                    String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                    editTextDate.setText(selectedDate);
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        // Se ejecuta cuando se selecciona una fecha
+                        Calendar selectedCalendar = Calendar.getInstance();
+                        selectedCalendar.set(year, monthOfYear, dayOfMonth);
+                        String selectedDate = formatDate(selectedCalendar.getTimeInMillis());
+                        editTextDate.setText(selectedDate);
+                    }
                 }, year, month, day);
 
         datePickerDialog.show();
+    }
+
+    private String formatDate(long dateInMillis) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return dateFormat.format(dateInMillis);
     }
 
     private void showNotification() {
@@ -93,80 +136,5 @@ public class Anadir extends AppCompatActivity {
     private void cancelNotification() {
         NotificationManager notificationManager = getSystemService(NotificationManager.class);
         notificationManager.cancel(1);
-    }
-
-    public static class Tarea {
-        private String nombre;
-        private String fecha;
-        private String horaInicio;
-        private String horaFinal;
-        private String descripcion;
-
-        private Tarea(Builder builder) {
-            this.nombre = builder.nombre;
-            this.fecha = builder.fecha;
-            this.horaInicio = builder.horaInicio;
-            this.horaFinal = builder.horaFinal;
-            this.descripcion = builder.descripcion;
-        }
-
-        // Métodos getters para acceder a los datos de la tarea
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public String getFecha() {
-            return fecha;
-        }
-
-        public String getHoraInicio() {
-            return horaInicio;
-        }
-
-        public String getHoraFinal() {
-            return horaFinal;
-        }
-
-        public String getDescripcion() {
-            return descripcion;
-        }
-
-        public static class Builder {
-            private String nombre;
-            private String fecha;
-            private String horaInicio;
-            private String horaFinal;
-            private String descripcion;
-
-            public Builder setNombre(String nombre) {
-                this.nombre = nombre;
-                return this;
-            }
-
-            public Builder setFecha(String fecha) {
-                this.fecha = fecha;
-                return this;
-            }
-
-            public Builder setHoraInicio(String horaInicio) {
-                this.horaInicio = horaInicio;
-                return this;
-            }
-
-            public Builder setHoraFinal(String horaFinal) {
-                this.horaFinal = horaFinal;
-                return this;
-            }
-
-            public Builder setDescripcion(String descripcion) {
-                this.descripcion = descripcion;
-                return this;
-            }
-
-            public Tarea build() {
-                return new Tarea(this);
-            }
-        }
     }
 }

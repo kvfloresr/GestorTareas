@@ -38,6 +38,9 @@
         <activity
             android:name=".Anadir"
             android:exported="false" />
+        <activity
+            android:name=".Calendario"
+            android:exported="false" />
     </application>
 
 </manifest>

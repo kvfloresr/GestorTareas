@@ -3,6 +3,7 @@ package com.adrian.angenda_online;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -26,7 +27,13 @@ public class MenuPrincipal extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 }
-                // Agrega más casos para otros elementos del menú si es necesario
+                else if (itemId == R.id.navigation_calendario) {
+                    // Iniciar la actividad de inicio
+                    Intent intent = new Intent(MenuPrincipal.this, Calendario.class);
+                    startActivity(intent);
+                    return true;
+                }
+
                 return false;
             }
         });
